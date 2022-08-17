@@ -19,7 +19,7 @@ const App: Component = () => {
   autoAnimate;
 
   const [search, setSearch] = createSignal('');
-  const debounceValue = debounce((name: string) => setSearch(name), 500);
+  const debounceValue = debounce((name: string) => setSearch(name), 350);
   const [list] = createResource(search, fetchUserByName);
 
   return (
