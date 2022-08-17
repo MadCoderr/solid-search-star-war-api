@@ -19,7 +19,7 @@ const App: Component = () => {
   autoAnimate;
 
   const [search, setSearch] = createSignal('');
-  const debounceValue = debounce((name: string) => setSearch(name), 250);
+  const debounceValue = debounce((name: string) => setSearch(name), 500);
   const [list] = createResource(search, fetchUserByName);
 
   return (
@@ -30,10 +30,9 @@ const App: Component = () => {
             type="text"
             placeholder="Enter Sentence"
             class="input"
-            // onInput={(e: any) => setSearch(e.currentTarget.value)}
             onInput={(e: any) => {
-              debounceValue(e.currentTarget.value);
               debounceValue.clear();
+              debounceValue(e.currentTarget.value);
             }}
           />
         </div>
