@@ -19,7 +19,9 @@ const App: Component = () => {
   autoAnimate;
 
   const [search, setSearch] = createSignal('');
+
   const debounceValue = debounce((name: string) => setSearch(name), 350);
+
   const [list] = createResource(search, fetchUserByName);
 
   return (
@@ -35,6 +37,7 @@ const App: Component = () => {
               debounceValue(e.currentTarget.value);
             }}
           />
+          {list.loading && <span class="loading">loading...</span>}
         </div>
 
         <ul class="list" use:autoAnimate>
@@ -49,6 +52,11 @@ const App: Component = () => {
               );
             }}
           </For>
+          {list() && list().results.length === 0 && (
+            <li>
+              <span class="name">nothing found</span>
+            </li>
+          )}
         </ul>
       </div>
     </div>
