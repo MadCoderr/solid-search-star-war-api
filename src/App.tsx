@@ -33,7 +33,7 @@ const App: Component = () => {
             placeholder="Enter Sentence"
             class="input"
             onInput={(e: any) => {
-              debounceValue.clear();
+              // denounceValue.clear manually, on new inputs.
               debounceValue(e.currentTarget.value);
             }}
           />
