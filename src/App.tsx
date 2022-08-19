@@ -54,7 +54,7 @@ const App: Component = () => {
           </For>
           {list() && list().results.length === 0 && (
             <li>
-              <span class="name">nothing found</span>
+              <span class="name">no match found</span>
             </li>
           )}
         </ul>
